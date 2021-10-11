@@ -1,46 +1,32 @@
+#import time
+
 n = int(input())
 
-def isEncyclopediaOfParentheses(string):
-
-    string_changed = string
-    string_changed_length = len(string_changed)
-    i = 1
-    while string_changed_length > 0 and i < string_changed_length:
-        if(string[i-1] == '(' and string[i] == ')'):
-            if(i == 1):
-                string_changed = string[2:]
-            elif(i == n-1):
-                string_changed = string[:n-2]
-            else:
-                string_changed = string[0:i-1] + string[i+1:n]
-            i = 1
-            string = string_changed
-            string_changed_length = len(string_changed)
-            continue
-        i += 1
-    if(string_changed_length == 0):
-        return True
-    else:
-        return False
-    
-
-
-
-
-
-
-
-for i in range(1<<n):
+#start = time.time()
+for i in range(1<<n-1):
     s = ''
-    for j in range(n):
+    a = 0
+    b = 0
+    for j in range(n-1, -1, -1):
         if((i >> j) & 1):
-            s += '('
+            if(b == 0): break
+            s += ')'
+            a += 1
         else:
-            s += ')' 
+            s += '('
+            b += 1
+    if(a != b): continue
 
-    if(isEncyclopediaOfParentheses(s)):
-        print(s)
+    depth = 0
+    for j in range(n):
+        if(s[j] == '('): depth += 1
+        if(s[j] == ')'): depth -= 1
+        if(depth < 0): break
+    
+    if(depth == 0): print(s)
 
+#elapsed_time = time.time() - start
+#print ("elapsed_time:{0}".format(elapsed_time) + "[sec]")
 
     
 
