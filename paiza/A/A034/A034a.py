@@ -55,3 +55,10 @@ def dfs(i,v,itemcount):
         return min_res
 
 print(dfs(0,x,0))
+
+'''
+再帰関数dfsは返り値としてmin_changeを返しているが、min_changeはグローバル変数であるため、
+min_changeが更新された時点で、どの深さのdfsも同じ値を返すことになる。
+よって、子ノードの返り値である変数res1とres2を比べたとしても、二つとも同じ値であるため
+毎回else文が実行されるようになっている。
+'''
