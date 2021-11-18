@@ -13,35 +13,35 @@ def dfs(i,v,itemcount):
     global min_change
     global max_itemcount
 #    print("(i,v) =",i,v,"itemcount =",itemcount)
-    print(q.queue)
+#    print(q.queue)
     if(i == n):
-        print("到達")
+#        print("到達")
         if(max_itemcount < itemcount):
-            print("更新")
+#            print("更新")
             max_itemcount = itemcount
             min_change = v
         elif(max_itemcount == itemcount and min_change > v):
-            print("更新")
+#            print("更新")
             min_change = v
-        else:
-            print("更新なし")
-        print("max_itemcount =",max_itemcount,"min_change =",min_change)
+#        else:
+#            print("更新なし")
+#        print("max_itemcount =",max_itemcount,"min_change =",min_change)
 #        print("return")
         return min_change
     elif(v < value[i]):
-        print(value[i],"が入らない")
+#        print(value[i],"が入らない")
         q.put(0)
         tmp = dfs(i+1,v,itemcount)
         q.get()
         return tmp    
     else:
 #        print("残り",v)
-        print(value[i],"を入れない")
+#        print(value[i],"を入れない")
         q.put(0)
         res1 = dfs(i+1,v,itemcount)
         q.get()
 #        print("残り",v)
-        print(value[i],"を入れる")
+#        print(value[i],"を入れる")
         q.put(value[i])
         res2 = dfs(i+1,(v - value[i]),itemcount+1)
         if(res1 > res2):
