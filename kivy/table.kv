@@ -1,0 +1,59 @@
+# BoxLayout:
+#
+#     Label:
+#         text: "こんにちは、世界"
+#         color: 1,0,1,1
+#         size_hint_x: 0.5
+#     Label:
+#         text: "テスト１"
+#         color:0,1,0,1
+#         size_hint_x: 1
+#
+#         canvas.before:
+#             Color:
+#                 rgba: 0, 1, 1, 1
+#             Rectangle:
+#                 pos: self.pos
+#                 size: self.size
+#     Label:
+#         text: "テスト2 "
+#         color: 0,0,1,1
+#         size_hint_x: 0.5
+
+<TextWidget>:
+    BoxLayout:
+        orientation: "vertical"
+        size: root.size
+
+        Label:
+            id: label1
+            font_size: 30
+            text: "Hello_World"
+            size_hint_y: 1
+        Button:
+            id: button1
+            text: "OK"
+            font_size: 20
+            size_hint_y: 0.5
+
+        BoxLayout:
+            orientation: "horizontal"
+
+            TextsWidget:
+                size_hint_x: 0.5
+            TextsWidget:
+                size_hint_x: 1.5
+
+
+<TextsWidget>:
+    BoxLayout:
+        orientation: "vertical"
+        size: root.size
+        size_hint_y: 0.5
+
+        Label:
+            text: "menu1"
+        Label:
+            text: "menu2"
+        Label:
+            text: "menu3"
